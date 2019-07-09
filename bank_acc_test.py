@@ -24,3 +24,7 @@ class TestBankAccount(unittest.TestCase):
     def test_incorrect_pin_code_attempts_left(self):
         incorrect_attempt = self.terminal.enter_pin_code(546)
         self.assertNotEqual(self.terminal.attempts, 3)
+
+    def test_user_can_withdraw_money_with_correct_pin(self):
+        correct_pin_attempt = self.terminal.enter_pin_code(333)
+        self.assertTrue(self.terminal.user_can_get_money)
