@@ -41,3 +41,8 @@ class TestBankAccount(unittest.TestCase):
         my_money = self.terminal.top_up_money(-1)
         self.assertEqual(my_money, 5000)
         #to do: symbols, symbols+numbers
+
+    def test_user_cant_top_up_with_symbols(self):
+        #Test should be down
+        my_money = self.terminal.top_up_money('1q2w3e4r5t6y7u8i9o')
+        self.assertEqual(my_money, 5000)
