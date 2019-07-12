@@ -46,3 +46,27 @@ class TestBankAccount(unittest.TestCase):
         #Test should be down
         my_money = self.terminal.top_up_money('1q2w3e4r5t6y7u8i9o')
         self.assertEqual(my_money, 5000)
+
+    def test_user_can_withdraw_money(self):
+        withdraw = self.terminal.withdraw_money(5000)
+        self.assertEqual(self.terminal.balance, 0)
+
+    def test_user_cant_withdraw_bigger_amount(self):
+        withdraw = self.terminal.withdraw_money(5001)
+        self.assertNotEqual(self.terminal.balance, 0)
+
+    def test_user_can_withdraw_lower_amount(self):
+        withdraw = self.terminal.withdraw_money(4999)
+        self.assertEqual(self.terminal.balance, 1)
+
+    def test_user_cant_withdraw_negative_amount(self):
+        #This test should be down
+        withdraw = self.terminal.withdraw_money(-1)
+        self.assertEqual(self.terminal.balance, 5001)
+
+    def test_user_cant_withdraw_symbol_amount(self):
+        # This test should be down
+        withdraw = self.terminal.withdraw_money('1q2w3e4r5t6y7u')
+        self.assertEqual(self.terminal.balance, 4999)
+#HW - add exceptions new file using classes(exception)pass , return switch to raise
+#def check balance
