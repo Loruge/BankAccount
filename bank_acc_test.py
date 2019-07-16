@@ -69,12 +69,14 @@ class TestBankAccount(unittest.TestCase):
         withdraw = self.terminal.withdraw_money('1q2w3e4r5t6y7u')
         self.assertEqual(self.terminal.balance, 4999)
 
-    def test_user_can_check_balance(self):
-        my_balance = self.terminal.balance
-        self.terminal.enter_pin_code(333)
-        self.assertEqual(my_balance, self.terminal.balance)
+    def test_user_can_check_balance(self):# ccmpletion 10%
+        enter_pin = self.terminal.enter_pin_code(333)
+        self.assertTrue(self.terminal.check_balance())
+        self.assertEqual(self.terminal.balance, 5000)
+        # my_balance = self.terminal.balance
+        # self.terminal.enter_pin_code(333)
+        # self.assertEqual(my_balance, self.terminal.balance)
 
     def test_user_cant_check_balance_with_incorrect_pin(self):
-        my_balance = self.terminal.balance
-        self.terminal.enter_pin_code(546)
-        self.assertNotEqual(my_balance, self.terminal.user_can_get_money)
+        enter_incorrect_pin = self.terminal.enter_pin_code(546)
+        self.assertRaises(Exception)

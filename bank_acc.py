@@ -18,12 +18,14 @@ class InternetBank(object):
             return 'Access Denied. Wrong pin.'
         if pin_code == correct_pin_code:
             self.user_can_get_money = True
-            return True, 'Access Allowed.'
+            return True #Access Allowed.
 
     def check_balance(self):
         #check_balance_func = self.balance /not sure
         if self.user_can_get_money:
             return self.balance
+        else:
+            raise EnterPin #for irrelevant unit test
 
     def withdraw_money(self, withdraw_sum):
         if self.user_can_get_money:

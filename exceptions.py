@@ -8,3 +8,7 @@ class WrongPin(Exception):
 
 class NotEnoughMoney(Exception):
     pass
+
+
+class EnterPin(Exception):
+    pass
